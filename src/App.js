@@ -46,6 +46,11 @@ class App extends React.Component {
                     BOT
                   </label>
                 </div>
+                <Speech
+                  text={this.state.topicBox}
+                  textAsButton
+                  displayText="Play"
+                />
               </div>
               <div class="box box2">
                 <div class="form__group field">
@@ -62,13 +67,17 @@ class App extends React.Component {
                     CUSTOMER
                   </label>
                 </div>
+                <Speech
+                  text={this.state.payloadBox}
+                  textAsButton
+                  displayText="Play"
+                />
               </div>
             </div>
 
             {/* <button value="Send" onClick={this.publish}>
               Publish
             </button>  */}
-            <Speech text={this.state.topicBox} textAsButton displayText="Play" />
           </div>
         </article>
       </header>

@@ -1,4 +1,5 @@
 import React from "react";
+import Speech from "react-speech";
 
 export class Parent extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export class Parent extends React.Component {
   }
 
   greet(value) {
-    //console.log(value);
+    console.log(value);
 
     const { text } = this.state;
     return this.setState({
@@ -24,7 +25,9 @@ export class Parent extends React.Component {
         <Child onGreet={this.greet} />
         <ul>
           {this.state.text.map((x) => (
-            <li>{x}</li>
+            <li>
+              {x} <Speech text={x} textAsButton displayText="Play" />{" "}
+            </li>
           ))}
         </ul>
       </div>
@@ -51,11 +54,20 @@ export class Child extends React.Component {
   render() {
     return (
       <div>
-        <input
-          type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
+        <div class="form__group field">
+          <input
+            type="text"
+            class="form__field"
+            placeholder="Name"
+            id="name"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+          <label for="name" class="form__label">
+            Chat..
+          </label>
+        </div>
+
         <button type="button" onClick={this.eventClick}>
           Submit{" "}
         </button>

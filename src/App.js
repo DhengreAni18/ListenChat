@@ -1,14 +1,14 @@
-import React from "react";
-// import logo from './logo.svg';
+import React from 'react';
 import "./App.css";
 import Speech from "react-speech";
+import Parent from './modules/ulist';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      topicBox: null,
-      payloadBox: null,
+      botip: null,
+      customerip: null,
     };
 
     this.publish = this.publish.bind(this);
@@ -22,24 +22,29 @@ class App extends React.Component {
   }
 
   publish() {
-    console.log(this.state.topicBox, this.state.payloadBox);
+    console.log(this.state.botip, this.state.customerip);
   }
+
+  
 
   render() {
     return (
       <header className="App-header">
+        
         <article className="card">
+        
           <div>
             <div class="grid2x2">
               <div class="box box1">
+              <Parent> </Parent>
                 <div class="form__group field">
                   <input
                     type="input"
                     class="form__field"
                     placeholder="Name"
-                    name="topicBox"
+                    name="botip"
                     id="name"
-                    value={this.state.topicBox}
+                    value={this.state.botip}
                     onChange={this.handleChange}
                   />
                   <label for="name" class="form__label">
@@ -47,20 +52,21 @@ class App extends React.Component {
                   </label>
                 </div>
                 <Speech
-                  text={this.state.topicBox}
+                  text={this.state.botip}
                   textAsButton
                   displayText="Play"
                 />
               </div>
               <div class="box box2">
+              <Parent> </Parent>
                 <div class="form__group field">
                   <input
                     type="input"
                     class="form__field"
                     placeholder="Name"
-                    name="payloadBox"
+                    name="customerip"
                     id="name"
-                    value={this.state.payloadBox}
+                    value={this.state.customerip}
                     onChange={this.handleChange}
                   />
                   <label for="name" class="form__label">
@@ -68,7 +74,7 @@ class App extends React.Component {
                   </label>
                 </div>
                 <Speech
-                  text={this.state.payloadBox}
+                  text={this.state.customerip}
                   textAsButton
                   displayText="Play"
                 />

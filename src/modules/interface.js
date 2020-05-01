@@ -17,7 +17,6 @@ export class Parent extends React.Component {
   greet(value) {
     console.log(this.state.text);
 
-    // const { text } = this.state;
     return this.setState({
       text: this.state.text.concat(value),
     });
@@ -26,7 +25,6 @@ export class Parent extends React.Component {
   greetcust(value) {
     console.log(this.state.txtcust);
 
-    // const { text } = this.state;
     return this.setState({
       txtcust: this.state.txtcust.concat(value),
     });
@@ -35,11 +33,26 @@ export class Parent extends React.Component {
   finalChat(value) {
     console.log(this.state.finalchat);
 
-    // const { text } = this.state;
     return this.setState({
       finalchat: this.state.finalchat.concat(value),
     });
   }
+
+  downloadFile = async () => {
+    const { finalchat } = this.state; // I am assuming that "this.state.myData"
+    // is an object and I wrote it to file as
+    // json
+    const fileName = "file";
+    const json = JSON.stringify(finalchat);
+    const blob = new Blob([json], { type: "application/json" });
+    const href = await URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = fileName + ".json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   render() {
     return (
@@ -47,28 +60,50 @@ export class Parent extends React.Component {
         <article className="card">
           <div className="grid2x2">
             <div className="box box1">
-              <Bot onGreet={this.greet} Onfinal={this.finalChat} />
               <ul>
                 {this.state.text.map((xx) => (
-                  <li>
-                    {xx} <Speech text={xx} textAsButton displayText="Play" />{" "}
+                  <li key={xx}>
+                    {xx}{" "}
+                    <Speech
+                      text={xx}
+                      textAsButton
+                      displayText="Play"
+                      voice="Google UK English Male"
+                    />{" "}
                   </li>
                 ))}
               </ul>
+              <Bot onGreet={this.greet} Onfinal={this.finalChat} />
             </div>
             <div className="box box2">
-              <Cust onGreetCust={this.greetcust} Onfinal={this.finalChat} />
               <ul>
                 {this.state.txtcust.map((x) => (
-                  <li>
-                    {x} <Speech text={x} textAsButton displayText="Play" />{" "}
+                  <li key={x}>
+                    {x}{" "}
+                    <Speech
+                      text={x}
+                      textAsButton
+                      displayText="Play"
+                      voice="Google UK English Male"
+                    />{" "}
                   </li>
                 ))}
               </ul>
+              <Cust onGreetCust={this.greetcust} Onfinal={this.finalChat} />
             </div>
           </div>
-          
-          <Speech text={this.state.finalchat + " "} textAsButton displayText="Play final Chat"  />
+          <button className="playall">
+            <Speech
+              text={this.state.finalchat + ""}
+              textAsButton
+              displayText="Play final Chat"
+              voice="Google UK English Male"
+            />
+          </button>
+
+          <button onClick={this.downloadFile} className="btn fifth">
+            download json
+          </button>
         </article>
       </div>
     );
@@ -113,8 +148,8 @@ export class Bot extends React.Component {
           </label>
         </div>
 
-        <button type="button" onClick={this.eventClick}>
-          Submit{" "}
+        <button type="button" className="btn submit" onClick={this.eventClick}>
+          Send{" "}
         </button>
       </div>
     );
@@ -159,8 +194,12 @@ export class Cust extends React.Component {
           </label>
         </div>
 
-        <button type="button" onClick={this.eventClickCust}>
-          Submit{" "}
+        <button
+          type="button"
+          className="btn submit"
+          onClick={this.eventClickCust}
+        >
+          Send{" "}
         </button>
       </div>
     );

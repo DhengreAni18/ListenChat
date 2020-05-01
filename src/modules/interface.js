@@ -123,7 +123,9 @@ export class Parent extends React.Component {
               />
             </div>
           </div>
-          <button className="playall">
+          
+        </article>
+        <button className="playall">
             <Speech
               text={this.state.finalchat + ""}
               textAsButton
@@ -132,10 +134,9 @@ export class Parent extends React.Component {
             />
           </button>
 
-          <button onClick={this.downloadFile} className="btn fifth">
+          <button onClick={this.downloadFile} className="btn download">
             download json
           </button>
-        </article>
       </div>
     );
   }

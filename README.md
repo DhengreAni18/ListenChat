@@ -1,6 +1,6 @@
-### Clone the Repository or Download
+### 1. Clone the Repository or Download
 
-### Get to the Terminal with correct Project directory
+### 2. Get to the Terminal with correct Project directory
 
-## Run
+## 3. Run
 ```npm start```

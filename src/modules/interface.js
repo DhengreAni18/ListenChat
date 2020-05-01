@@ -76,6 +76,9 @@ export class Bot extends React.Component {
 
   eventClick() {
     this.props.onGreet(this.state.value);
+    this.setState({
+      value : ''
+  })
   }
 
   render() {
@@ -118,6 +121,9 @@ export class Cust extends React.Component {
 
   eventClickCust() {
     this.props.onGreetCust(this.state.valuecust);
+    this.setState({
+      valuecust : ''
+  })
   }
 
   render() {
@@ -129,7 +135,7 @@ export class Cust extends React.Component {
             className="form__field"
             placeholder="Name"
             id="ipcust"
-            value={this.state.value}
+            value={this.state.valuecust}
             onChange={this.handleChangeCust}
           />
 

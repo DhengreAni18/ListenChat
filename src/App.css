@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+
+body, html {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #341cac;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -20,8 +26,8 @@
 }
 
 .card {
-  height: 700px;
-  width: 80%;
+  height: 90%;
+  width: 90%;
   display: block;
   margin: 60px auto;
   box-shadow: 10px 5px 40px 20px #2d1896;
@@ -73,7 +79,7 @@
 
 .form__field {
   font-family: inherit;
-  width: 100%;
+  width: 140%;
   border: 0;
   border-bottom: 2px solid #9b9b9b;
   outline: 0;
@@ -209,6 +215,6 @@ ul {
 }
 
 .playall {
- text-transform: uppercase;
-  
+ padding: 10px;
+  margin-top: 20px;
 }

@@ -2,5 +2,5 @@
 
 ### 2. Get to the Terminal with correct Project directory
 
-## 3. Run
+#### 3. Run
 ```npm start```

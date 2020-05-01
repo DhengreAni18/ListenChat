@@ -36,19 +36,19 @@ export class Parent extends React.Component {
   finalChat(value) {
     console.log(this.state.finalchat);
 
-    return (
-      this.setState({
-        finalchat: this.state.finalchat.concat(value),
-      })
-      
-    );
+    return this.setState({
+      finalchat: this.state.finalchat.concat(value),
+    });
   }
 
   jsonChatBot(value) {
     console.log(this.state.chatjson);
 
     return this.setState({
-      chatjson: this.state.chatjson.concat({ Bot: value }),
+      chatjson: this.state.chatjson.concat({
+        Bot: value,
+        timestamp: new Date(),
+      }),
     });
   }
 
@@ -56,13 +56,16 @@ export class Parent extends React.Component {
     console.log(this.state.chatjson);
 
     return this.setState({
-      chatjson: this.state.chatjson.concat({ User: value }),
+      chatjson: this.state.chatjson.concat({
+        User: value,
+        timestamp:new Date(),
+      }),
     });
   }
 
   downloadFile = async () => {
-    const { chatjson } = this.state; 
-    const fileName = "file";
+    const { chatjson } = this.state;
+    const fileName = "Chat_JSON";
     const json = JSON.stringify(chatjson);
     const blob = new Blob([json], { type: "application/json" });
     const href = await URL.createObjectURL(blob);
@@ -93,7 +96,11 @@ export class Parent extends React.Component {
                   </li>
                 ))}
               </ul>
-              <Bot onGreet={this.greet} Onfinal={this.finalChat} json={this.jsonChatBot} />
+              <Bot
+                onGreet={this.greet}
+                Onfinal={this.finalChat}
+                json={this.jsonChatBot}
+              />
             </div>
             <div className="box box2">
               <ul>
@@ -109,7 +116,11 @@ export class Parent extends React.Component {
                   </li>
                 ))}
               </ul>
-              <Cust onGreetCust={this.greetcust} Onfinal={this.finalChat} json={this.jsonChatUser} />
+              <Cust
+                onGreetCust={this.greetcust}
+                Onfinal={this.finalChat}
+                json={this.jsonChatUser}
+              />
             </div>
           </div>
           <button className="playall">

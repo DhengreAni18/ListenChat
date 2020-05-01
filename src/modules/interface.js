@@ -6,9 +6,11 @@ export class Parent extends React.Component {
     super();
     this.greet = this.greet.bind(this);
     this.greetcust = this.greetcust.bind(this);
+    this.finalChat = this.finalChat.bind(this);
     this.state = {
       text: [],
       txtcust: [],
+      finalchat:[]
     };
   }
 
@@ -30,23 +32,32 @@ export class Parent extends React.Component {
     });
   }
 
+  finalChat(value) {
+    console.log(this.state.finalchat);
+
+    // const { text } = this.state;
+    return this.setState({
+      finalchat: this.state.finalchat.concat(value),
+    });
+  }
+
   render() {
     return (
       <div>
         <article className="card">
           <div className="grid2x2">
             <div className="box box1">
-              <Bot onGreet={this.greet} />
+              <Bot onGreet={this.greet} Onfinal={this.finalChat}/>
               <ul>
-                {this.state.text.map((x) => (
+                {this.state.text.map((xx) => (
                   <li>
-                    {x} <Speech text={x} textAsButton displayText="Play" />{" "}
+                    {xx} <Speech text={xx} textAsButton displayText="Play" />{" "}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="box box2">
-              <Cust onGreetCust={this.greetcust} />
+              <Cust onGreetCust={this.greetcust} Onfinal={this.finalChat} />
               <ul>
                 {this.state.txtcust.map((x) => (
                   <li>
@@ -76,6 +87,7 @@ export class Bot extends React.Component {
 
   eventClick() {
     this.props.onGreet(this.state.value);
+    this.props.Onfinal(this.state.value);
     this.setState({
       value : ''
   })
@@ -121,6 +133,7 @@ export class Cust extends React.Component {
 
   eventClickCust() {
     this.props.onGreetCust(this.state.valuecust);
+    this.props.Onfinal(this.state.valuecust);
     this.setState({
       valuecust : ''
   })

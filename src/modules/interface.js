@@ -10,7 +10,7 @@ export class Parent extends React.Component {
     this.state = {
       text: [],
       txtcust: [],
-      finalchat:[]
+      finalchat: [],
     };
   }
 
@@ -47,7 +47,7 @@ export class Parent extends React.Component {
         <article className="card">
           <div className="grid2x2">
             <div className="box box1">
-              <Bot onGreet={this.greet} Onfinal={this.finalChat}/>
+              <Bot onGreet={this.greet} Onfinal={this.finalChat} />
               <ul>
                 {this.state.text.map((xx) => (
                   <li>
@@ -67,6 +67,8 @@ export class Parent extends React.Component {
               </ul>
             </div>
           </div>
+          
+          <Speech text={this.state.finalchat + " "} textAsButton displayText="Play final Chat"  />
         </article>
       </div>
     );
@@ -89,8 +91,8 @@ export class Bot extends React.Component {
     this.props.onGreet(this.state.value);
     this.props.Onfinal(this.state.value);
     this.setState({
-      value : ''
-  })
+      value: "",
+    });
   }
 
   render() {
@@ -135,8 +137,8 @@ export class Cust extends React.Component {
     this.props.onGreetCust(this.state.valuecust);
     this.props.Onfinal(this.state.valuecust);
     this.setState({
-      valuecust : ''
-  })
+      valuecust: "",
+    });
   }
 
   render() {

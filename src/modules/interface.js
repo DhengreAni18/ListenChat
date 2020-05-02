@@ -165,7 +165,7 @@ export class Bot extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ipcontainer">
         <div className="form__group field">
           <input
             type="text"
@@ -216,7 +216,7 @@ export class Cust extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ipcontainer">
         <div className="form__group field">
           <input
             type="text"

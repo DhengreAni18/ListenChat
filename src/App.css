@@ -186,7 +186,7 @@ ul {
   -webkit-transition: color 150ms ease-in-out;
   transition: color 150ms ease-in-out;
   float: right;
-  margin-right: -20px;
+  margin-right: -10px;
 }
 .download:after {
   content: "";
@@ -210,10 +210,12 @@ ul {
   width: 110%;
 }
 
-
-
 .playall {
   margin-left: 30px;
   padding: 15px;
   margin-top: 20px;
+}
+
+.ipcontainer {
+  margin-left: -30px;
 }
